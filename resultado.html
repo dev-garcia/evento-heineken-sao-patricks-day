@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Residuum - Heineken Resultado</title>
+    <style>
+      :root {
+        --cor-azul: #002266;
+        --cor-verde: #64a23d;
+        --cor-cinza: #585c5e;
+        --cor-laranja: #ff4a00;
+        --cor-branco: #ffffff;
+        --cor-preto: #000000;
+      }
+      body {
+        background-color: var(--cor-azul);
+        color: var(--cor-branco);
+        font-family: Arial, sans-serif;
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      th,
+      td {
+        border: 1px solid var(--cor-verde);
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: var(--cor-verde);
+        color: var(--cor-branco);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <table id="data-table">
+        <tr>
+          <th>Número de telefone</th>
+          <th>Quantidade de garrafas descartadas</th>
+        </tr>
+      </table>
+    </div>
+    <script>
+      window.onload = function () {
+        var data = JSON.parse(localStorage.getItem("data")) || [];
+        var table = document.getElementById("data-table");
+        for (var i = 0; i < data.length; i++) {
+          var row = table.insertRow(-1);
+          var cell1 = row.insertCell(0);
+          var cell2 = row.insertCell(1);
+          cell1.innerHTML = data[i].telefone;
+          cell2.innerHTML = data[i].descarte;
+        }
+      };
+    </script>
+  </body>
+</html>
